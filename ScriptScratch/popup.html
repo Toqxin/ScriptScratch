@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ScriptScratch</title>
+    <link rel="stylesheet" type="text/css" href="popup.css"> 
+    <script src="libs/Chart.min.js"></script>
+  </head>
+  <body>
+
+    <div id="container">
+      <div id="head-keys">
+        <h2>ScriptScratch</h2>
+        <div id="second-ob" class="ob">Charts</div>
+        <div id="first-ob" class="ob">Notes</div>
+        <div id="third-ob" class="ob">Library</div>
+        <div id="fourth-ob" class="ob">User Guide</div>
+        <div id="active-time" title="Daily Active Time"></div>
+      </div>
+
+      <div id="labels">
+        <div class="first-selection">
+          <label id="first-label" for="timeRange">Time Range</label>
+          <select id="timeRange">
+            <option value="1h">Last 1 Hour</option>
+            <option value="24h">Last 1 Day</option>
+            <option value="1w">Last 1 Week</option>
+            <option value="1m">Last 1 Month</option>
+          </select>
+        </div>
+
+        <div class="second-selection">
+          <label id="second-label" for="chartType">Chart Type</label>
+          <select id="chartType">
+            <option value="doughnut">Doughnut</option>
+            <option value="bar">Bar</option>
+            <option value="line">Line</option>
+            <option value="pie">Pie</option>
+          </select>
+        </div>
+      </div>
+      <hr>
+
+      <div id="content">
+        <div id="notes-section" style="display: none;">
+          <input type="text" id="search-box" placeholder="Search notes..."><span id="notes-count"></span>
+          <div id="notes"></div>
+        </div>
+        
+        <canvas id="chart" width="400" height="400"></canvas>
+        <p id="no-data-message" style="display: none;">No interactions yet</p>
+        <div id="library-section" style="display: none;">
+          <div id="bookshelf">
+            <div id="visible-books">
+              
+              <div id="book-one" class="book">
+                <button id="one-del" class="del-btn">Erase</button>
+                <h3 id="one-head" class="heads">Book1</h3>
+                <span id="one-prg" class="progress-bar-container">
+                  <div class="allbar">
+                    <div class="progress-bar">
+                      <span class="progress-text"></span>
+                    </div>
+                  </div>
+                </span>
+              </div>
+
+              <div id="book-two" class="book">
+                <button id="two-del" class="del-btn">Erase</button>
+                <h3 id="two-head" class="heads">Book2</h3>
+                <span id="two-prg" class="progress-bar-container">
+                  <div class="allbar">
+                    <div class="progress-bar">
+                      <span class="progress-text"></span>
+                    </div>
+                  </div>
+                </span>
+              </div>
+
+              <div id="book-three" class="book">
+                <button id="three-del" class="del-btn">Erase</button>
+                <h3 id="three-head" class="heads">Book3</h3>
+                <span id="three-prg" class="progress-bar-container">
+                  <div class="allbar">
+                    <div class="progress-bar">
+                      <span class="progress-text"></span>
+                    </div>
+                  </div>
+                </span>
+              </div>
+
+              <div id="book-four" class="book">
+                <button id="four-del" class="del-btn">Erase</button>
+                <h3 id="four-head" class="heads">Book4</h3>
+                <span id="four-prg" class="progress-bar-container">
+                  <div class="allbar">
+                    <div class="progress-bar">
+                      <span class="progress-text"></span>
+                    </div>
+                  </div>
+                </span>
+              </div>
+            </div>
+
+            <div class="page" id="one-page">
+              <div class="page-head-back">
+                <div class="saved">saved...</div>
+              </div>
+              <h1 class="page-h1" id="one-page-h1"></h1>
+              <textarea class="page-textarea" id="one-page-textarea" placeholder="Write somethings..."></textarea>
+              <div class="save-cancel">
+                <button class="save-btn">Save</button>
+                <button class="cancel-btn">Cancel</button>
+              </div>
+            </div>
+
+            <div class="page" id="two-page">
+              <div class="page-head-back">
+                <div class="saved">saved...</div>
+              </div>
+              <h1 class="page-h1" id="two-page-h1"></h1>
+              <textarea class="page-textarea" id="one-page-textarea" placeholder="Write somethings..."></textarea>
+              <div class="save-cancel">
+                <button class="save-btn">Save</button>
+                <button class="cancel-btn">Cancel</button>
+              </div>
+            </div>
+
+            <div class="page" id="three-page">
+              <div class="page-head-back">
+                <div class="saved">saved...</div>
+              </div>
+              <h1 class="page-h1" id="three-page-h1"></h1>
+              <textarea class="page-textarea" id="three-page-textarea" placeholder="Write somethings..."></textarea>
+              <div class="save-cancel">
+                <button class="save-btn">Save</button>
+                <button class="cancel-btn">Cancel</button>
+              </div>
+            </div>
+
+            <div class="page" id="four-page">
+              <div class="page-head-back">
+                <div class="saved">saved...</div>
+              </div>
+              <h1 class="page-h1" id="four-page-h1"></h1>
+              <textarea class="page-textarea" id="four-page-textarea" placeholder="Write somethings..."></textarea>
+              <div class="save-cancel">
+                <button class="save-btn">Save</button>
+                <button class="cancel-btn">Cancel</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div id="guide-page">
+          <h1>Introduction</h1>
+          <p><strong>ScriptScratch</strong> is a comprehensive note-taking and analysis tool designed for the Chrome browser. This guide provides detailed instructions on the installation and usage of the extension, ensuring that users can fully leverage the capabilities of <strong>ScriptScratch</strong>.</p>
+        
+          <h1>Features</h1>
+          <h3>Note Taking</h3>
+          <ul>
+            <li><strong>Quick and Easy Notes:</strong> Allows you to quickly take notes on any web page.</li>
+            <li><strong>Organized Notes:</strong> Store your notes in an organized manner, searchable by date and content.</li>
+            <li><strong>Search and Filter:</strong> Search and filter your notes using keywords.</li>
+          </ul>
+          <h3>Graphical Analysis</h3>
+          <ul>
+            <li><strong>Visit Statistics:</strong> View graphical analyses of the sites you have visited.</li>
+            <li><strong>Daily Active Time (DAT):</strong> Monitor the total time spent in Chrome daily. This feature resets every 24 hours, providing a fresh start each day.</li>
+            <li><strong>Various Chart Types:</strong> Visualize your data using pie, bar, line, and doughnut charts.</li>
+            <li><strong>Time Intervals:</strong> Select different time intervals (last 1 hour, last 1 day, last 1 week, last 1 month) to analyze your data.</li>
+          </ul>
+          
+          <h3>Library Management</h3>
+          <ul>
+            <li><strong>Organize Notes:</strong> Organize your notes under customized titles and categories in your library.</li>
+            <li><strong>Title Customization:</strong> Personalize each note title for different topics.</li>
+            <li><strong>Progress Tracking:</strong> Track the progress of your notes in percentages.</li>
+          </ul>
+        
+          <h1>Usage Steps</h1>
+          <ol>
+            <li><strong>Installing the Extension:</strong> Download and install the <strong>ScriptScratch</strong> extension from the Chrome Web Store.</li>
+            <li><strong>Taking Notes:</strong> Use the extension to take notes on the websites you visit. Click on the "Add Note" button, write your note in the popup, and save it.</li>
+            <li><strong>Viewing Graphical Analysis:</strong> Navigate to the graphs section of the extension. Select the desired time interval and chart type to visualize your visit statistics.</li>
+            <li><strong>Managing Your Library:</strong> Enter the library section to organize your notes under customized titles. Track the progress of your notes and update or delete them as needed.</li>
+          </ol>
+        
+          <h1>Frequently Asked Questions (FAQ)</h1>
+          <ul>
+            <li><strong>Is the extension free?</strong> Yes, the <strong>ScriptScratch</strong> extension is completely free to use.</li>
+            <li><strong>How can I access my saved notes?</strong> Your notes are stored in the notes section of the extension. You can access, search, and edit them at any time.</li>
+            <li><strong>Is my data secure?</strong> The extension stores your notes locally and does not share your data with third parties.</li>
+          </ul>
+        
+          <h1>Support and Contact</h1>
+          <p><strong>Contact Us:</strong> For questions or support, please reach out to us at <b><a href="mailto:scriptscratchofficial@gmail.com">scriptscratchofficial@gmail.com</a></b>.</p>
+        </div>
+        
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

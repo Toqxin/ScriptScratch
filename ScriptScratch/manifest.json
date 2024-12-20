@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "ScriptScratch",
+  "version": "1.0",
+  "description": "Efficiently analyze internet habits, create charts, and manage notes and books, enhancing your digital experience.",
+  "permissions": [
+    "history",
+    "storage",
+    "contextMenus",
+    "activeTab"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/ss.png",
+      "48": "icons/ss.png",
+      "128": "icons/ss.png"
+    }
+  },
+  "icons": {
+    "16": "icons/ss.png",
+    "48": "icons/ss.png",
+    "128": "icons/ss.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';",
+    "content_scripts": "script-src 'self'; object-src 'self';"
+  }
+}
